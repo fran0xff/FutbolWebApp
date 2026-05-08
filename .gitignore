@@ -1,0 +1,17 @@
+# DataFlex
+*.loc
+*.dbg
+*.pbg
+
+# Build
+Programs/*.exe
+
+# VSCode
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log

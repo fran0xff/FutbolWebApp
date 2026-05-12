@@ -15,8 +15,13 @@ Desktop.ini
 
 # Logs
 *.log
+<<<<<<< HEAD
 
 # DataFlex temporales
 Programs/*.exe
 Programs/*.log
 Data/*.dat
+=======
+ franc_Studio.dsk
+.gitignore
+>>>>>>> feature/Índice_Entrenador

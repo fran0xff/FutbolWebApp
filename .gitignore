@@ -15,3 +15,8 @@ Desktop.ini
 
 # Logs
 *.log
+
+# DataFlex temporales
+Programs/*.exe
+Programs/*.log
+Data/*.dat

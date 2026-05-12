@@ -1,0 +1,32 @@
+[Workspace]
+CurrentProject=WebApp.src
+Location=C:\DataFlex Projects\FutbolWebApp\IdeSrc\franc_Studio.dsk
+CreateNew=-1
+[TabWindows]
+GroupCount=1
+HorizontalGroups=1
+[TabGroup0]
+GroupSize=40
+SelectedTab=1
+[Window0]
+Filename=C:\DataFlex Projects\FutbolWebApp\AppSrc\WebApp.src
+ViewType=1
+Top=26
+Left=0
+Bottom=968
+Right=1797
+CursorLine=0
+CursorColumn=0
+TabIndex=0
+TabGroup=0
+[Window1]
+Filename=C:\DataFlex Projects\FutbolWebApp\AppSrc\Dashboard.wo
+ViewType=1
+Top=26
+Left=0
+Bottom=968
+Right=1797
+CursorLine=60
+CursorColumn=53
+TabIndex=1
+TabGroup=0

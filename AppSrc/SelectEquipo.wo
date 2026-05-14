@@ -68,8 +68,8 @@ Object oSelectEquipo is a cWebView
         End_Object 
 
         Object oligaID is a cWebColumn
-            Entry_Item liga.ID
-            Set psCaption to "LigaID"
+            Entry_Item liga.Nombre
+            Set psCaption to "Liga"
             Set piWidth to 124
             Set pbNewLine to True
         End_Object 

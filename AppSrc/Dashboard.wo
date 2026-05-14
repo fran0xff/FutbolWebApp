@@ -29,10 +29,10 @@ Object oDashboard is a cWebView
 
     Set piMaxWidth to 1024
     
-    Set psCaption to "Dashboard"
+    Set psCaption to "Inicio"
     Set peViewType to vtUndefined
     Set pbShowCaption to False
-    Set psCSSClass to "Dashboard"
+    Set psCSSClass to "Inicio"
     
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 24

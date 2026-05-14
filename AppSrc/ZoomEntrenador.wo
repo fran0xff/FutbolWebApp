@@ -73,7 +73,7 @@ Object oZoomEntrenador is a cWebView
             Set pbPromptButton to True
 
 // ToDo: Fill in the from-child parent Select view object name for navigate forward
-            WebRegisterPath ntNavigateForward oSelectEntrenador
+            WebRegisterPath ntNavigateForward oSelectEquipo
 
             Procedure OnPrompt
                 Send NavigatePath

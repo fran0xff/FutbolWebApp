@@ -9,22 +9,34 @@ Use cWebMenuItem.pkg
 Use cWebForm.pkg
 
 Use cligaDataDictionary.dd
+Use cWebButton.pkg
+Use cWebList.pkg
+Use cWebColumn.pkg
 
 Object oZoomLiga is a cWebView
     Set piColumnCount to 12
-    Set psCaption to "ZoomLiga"
+    Set psCaption to "Detalle Liga"
     Set peWebViewStyle to wvsDrilldown
     Set peViewType to vtZoom
     Set pbShowCaption to False
     Set Verify_Save_Msg to 0
     Set piMaxWidth to 1024
+    
+    WebRegisterPath ntNavigateForward oSelectEquipo // Navegacion filtrada equipo
+    WebRegisterPath ntNavigateForward oZoomLiga  // Navegacion filtrada equipo
 
     Object oliga_DD is a cligaDataDictionary
-    End_Object 
+    End_Object
 
-    Set Main_DD To oliga_DD
+    Object oequipo_DD is a cequipoDataDictionary
+        Set DDO_Server to oliga_DD
+        Set Constrain_File to liga.File_Number
+    End_Object
+
+    Set Main_DD to oliga_DD
     Set Server  To oliga_DD
 
+    WebRegisterPath ntNavigateForward oSelectEquipo
 
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 12
@@ -54,6 +66,43 @@ Object oZoomLiga is a cWebView
             Set psLabel to "Equipos"
         End_Object 
 
+        // Navegacion filtrada por equipo - listado
+        Object oEquiposListado is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Equipos de esta liga"
+            Set piColumnIndex to 0
+            
+            WebRegisterPath ntNavigateForward oSelectEquipo
+            
+            Procedure OnClick
+                Send NavigateForward of oSelectEquipo Self
+            End_Procedure
+            
+            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                Move True to NavigateData.bReadOnly
+            End_Procedure
+            
+        End_Object
+        
+    Object oEquiposList is a cWebList
+        Set Server to oequipo_DD
+        Set psCaption to "Detalle de esta liga"
+        Set piColumnSpan to 6
+        Set pbFillHeight to True
+    
+        Object oEquipoNombre is a cWebColumn
+            Entry_Item equipo.Nombre
+            Set psCaption to "Equipo"
+            Set piWidth to 300
+        End_Object
+    
+        Object oEquipoLiga is a cWebColumn
+            Entry_Item liga.Nombre
+            Set psCaption to "Liga"
+            Set piWidth to 200
+        End_Object
+    End_Object
+
         Object oligaEquiposMax is a cWebForm
             Entry_Item liga.EquiposMax
             Set piColumnSpan to 2
@@ -62,6 +111,8 @@ Object oZoomLiga is a cWebView
             Set psLabel to "EquiposMax"
         End_Object 
     End_Object 
+    
+    
 
     Object oActionGroup is a cWebMenuGroup
 

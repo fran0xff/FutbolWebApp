@@ -14,7 +14,7 @@ Object oZoomPosicion is a cWebView
     Set piColumnCount to 12
     Set psCaption to "ZoomPosicion"
     Set peWebViewStyle to wvsDrilldown
-    Set peViewType to vtZoom
+    Set peViewType to vtSelect
     Set pbShowCaption to False
     Set Verify_Save_Msg to 0
     Set piMaxWidth to 1024

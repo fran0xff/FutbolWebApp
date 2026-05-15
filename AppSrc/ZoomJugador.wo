@@ -11,6 +11,8 @@ Use cWebForm.pkg
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
 Use cjugadorDataDictionary.dd
+Use cWebButton.pkg
+Use SelectPosicion.wo
 
 Object oZoomJugador is a cWebView
     Set piColumnCount to 12
@@ -32,9 +34,8 @@ Object oZoomJugador is a cWebView
         Set DDO_Server To oequipo_DD
     End_Object 
 
-    Set Main_DD To ojugador_DD
-    Set Server  To ojugador_DD
-
+    Set Main_DD to ojugador_DD
+    Set Server  to ojugador_DD
 
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 12
@@ -79,6 +80,18 @@ Object oZoomJugador is a cWebView
                 Send NavigatePath
             End_Procedure
         End_Object 
+
+        Object oBtnSelectPosicion is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Select posición"
+        
+            WebRegisterPath ntNavigateForwardCustom oSelectPosicion
+
+            Procedure OnClick
+                Send NavigatePath
+            End_Procedure
+            
+        End_Object
     End_Object 
 
     Object oActionGroup is a cWebMenuGroup

@@ -36,7 +36,7 @@ Object oSelectJugador is a cWebView
     Set Server  To ojugador_DD
 
 
-    Object oList is a cWebList
+    Object oListaJugadores is a cWebList
         Set piColumnSpan to 0
         Set psCSSClass to "MobileList"
         Set pbServerOnRowClick to True
@@ -94,7 +94,7 @@ Object oSelectJugador is a cWebView
         End_Object 
 
 // ToDo: Fill in the from-parent child Select view object name for navigate forward
-//        WebRegisterPath ntNavigateForward oSelectView
+        WebRegisterPath ntNavigateForward oZoomJugador
 
         Procedure OnRowClick String sRowId
             tWebNavigateData NavigateData
@@ -118,7 +118,7 @@ Object oSelectJugador is a cWebView
                 Case Else // must be nfUndefined
 // ToDo: Fill in the from-parent child Select view object name for navigate forward
 //Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not yet defined"
-//                    Send NavigateForward of oSelectView Self
+                    Send NavigateForward of oZoomJugador Self
 
             Case End
         End_Procedure
@@ -136,7 +136,7 @@ Object oSelectJugador is a cWebView
             Set psCaption to "Search"
 
             Procedure OnClick
-                Send Search of oList
+                Send Search of oListaJugadores
             End_Procedure
 
         End_Object 

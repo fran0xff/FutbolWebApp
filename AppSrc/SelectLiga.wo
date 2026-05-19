@@ -26,7 +26,7 @@ Object oSelectLiga is a cWebView
     Set Server  To oliga_DD
 
 
-    Object oList is a cWebList
+    Object oListaLigas is a cWebList
         Set piColumnSpan to 0
         Set psCSSClass to "MobileList"
         Set pbServerOnRowClick to True
@@ -74,6 +74,7 @@ Object oSelectLiga is a cWebView
             Set psCaption to "Equipos"
             Set piWidth to 124
             Set pbNewLine to True
+            Set peAlign to alignLeft
         End_Object 
 
         Object oligaEquiposMax is a cWebColumn
@@ -81,10 +82,11 @@ Object oSelectLiga is a cWebView
             Set psCaption to "EquiposMax"
             Set piWidth to 124
             Set pbNewLine to True
+            Set peAlign to alignLeft
         End_Object 
 
 // ToDo: Fill in the from-parent child Select view object name for navigate forward
-        //WebRegisterPath ntNavigateForward oSelectLiga
+        WebRegisterPath ntNavigateForward oZoomLiga
 
         Procedure OnRowClick String sRowId
             tWebNavigateData NavigateData
@@ -108,7 +110,7 @@ Object oSelectLiga is a cWebView
                 Case Else // must be nfUndefined
 // ToDo: Fill in the from-parent child Select view object name for navigate forward
 //Error DFERR_PROGRAM "NavigateForward to this from-parent child Select view not yet defined"
-//                    Send NavigateForward of oSelectView Self
+                    Send NavigateForward of oZoomLiga Self
 
             Case End
         End_Procedure
@@ -126,7 +128,7 @@ Object oSelectLiga is a cWebView
             Set psCaption to "Search"
 
             Procedure OnClick
-                Send Search of oList
+                Send Search of oListaLigas
             End_Procedure
 
         End_Object 

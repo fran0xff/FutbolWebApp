@@ -22,5 +22,38 @@ Class cequipoDataDictionary is a DataDictionary
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
 
     End_Procedure
+    
+    Procedure Backout
+        Forward Send Backout
+        
+        Integer iNumEquipos iMaxEquipos
+        
+        Move liga.Equipos to iNumEquipos
+        
+        If (iNumequipos > 0) Begin
+            Decrement iNumEquipos
+            Move InumEquipos to liga.Equipos
+        End
+        Else Begin
+            Send UserError "No hay equipos que quitar" "ERROR"
+        End
+    End_Procedure
+    
+    Procedure Update
+        Forward Send Update 
+        
+        Integer iNumEquipos iMaxEquipos
+        
+        Move liga.EquiposMax to iMaxEquipos
+        Move liga.Equipos to iNumEquipos
+        
+        If (iNumEquipos < iMaxEquipos) Begin
+            Increment  iNumEquipos
+            Move InumEquipos to liga.Equipos
+        End
+        Else Begin
+            Send UserError "No caben más equipos en esta liga" "ERROR"
+        End
+    End_Procedure
 
 End_Class

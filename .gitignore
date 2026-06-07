@@ -22,6 +22,16 @@ Programs/*.exe
 Programs/*.log
 Data/*.dat
 =======
- franc_Studio.dsk
+franc_Studio.dsk
 .gitignore
 >>>>>>> feature/Índice_Entrenador
+
+WebApp.cfg
+WebApp.x64.dep
+WebApp.x64.prn
+webappsession.k1
+webappsession.k2
+webappsession.k3
+StudioMetaData64.mtd
+franc_Studio.dsk
+WebApp.dbg

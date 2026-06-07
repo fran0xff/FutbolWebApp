@@ -13,10 +13,15 @@ Use cequipoDataDictionary.dd
 Use cjugadorDataDictionary.dd
 Use cWebButton.pkg
 Use SelectPosicion.wo
+// Jugador posición
+Use cjugadorposicionDataDictionary.dd
+Use SelectJugadorPosicion.wo
+Use cposicionDataDictionary.dd
+// Jugador posición
 
 Object oZoomJugador is a cWebView
     Set piColumnCount to 12
-    Set psCaption to "Detalle Jugador"
+    Set psCaption to "Detalle del Jugador"
     Set peWebViewStyle to wvsDrilldown
     Set peViewType to vtZoom
     Set pbShowCaption to False
@@ -27,12 +32,23 @@ Object oZoomJugador is a cWebView
     End_Object 
 
     Object oequipo_DD is a cequipoDataDictionary
-        Set DDO_Server To oliga_DD
+        Set DDO_Server to oliga_DD
     End_Object 
 
     Object ojugador_DD is a cjugadorDataDictionary
-        Set DDO_Server To oequipo_DD
+        Set DDO_Server to oequipo_DD
     End_Object 
+
+    // Jugador posición
+    Object oposicionRel_DD is a cposicionDataDictionary
+    End_Object
+
+    Object ojugadorposicion_DD is a cjugadorposicionDataDictionary
+        Set DDO_Server to ojugador_DD
+        Set DDO_Server to oposicionRel_DD
+        Set Constrain_File to jugador.File_Number
+    End_Object
+    // Jugador posición
 
     Set Main_DD to ojugador_DD
     Set Server  to ojugador_DD
@@ -80,6 +96,38 @@ Object oZoomJugador is a cWebView
                 Send NavigatePath
             End_Procedure
         End_Object 
+        
+        // Jugador posición
+        Object oBtnEditarPosiciones is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Editar Posiciones"
+
+            WebRegisterPath ntNavigateForwardCustom oSelectJugadorPosicion
+
+            Procedure OnClick
+                Send NavigatePath
+            End_Procedure
+
+            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                String sJugadorId
+                Get Field_Current_Value of ojugador_DD Field jugador.ID to sJugadorId
+                Get NamedValueAdd NavigateData.NamedValues "JugadorID" sJugadorId to NavigateData.NamedValues
+            End_Procedure
+        End_Object
+
+        Object oPosicionesJugadorList is a cWebList
+            Set Server to ojugadorposicion_DD
+            Set psCaption to "Posiciones del jugador"
+            Set piColumnSpan to 12
+            Set pbFillHeight to False
+
+            Object oJugPosNombre is a cWebColumn
+                Entry_Item posicion.Nombre
+                Set psCaption to "Posición"
+                Set piWidth to 300
+            End_Object
+        End_Object
+        // Jugador posición
 
         Object oBtnSelectPosicion is a cWebButton
             Set piColumnSpan to 3
@@ -91,6 +139,15 @@ Object oZoomJugador is a cWebView
                 Send NavigatePath
             End_Procedure
             
+        End_Object
+
+        Object oDespedirBoton is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Despedir"
+        
+            Procedure OnClick
+                Send Clear of oequipo_DD        
+            End_Procedure
         End_Object
     End_Object 
 
